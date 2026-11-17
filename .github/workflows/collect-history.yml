@@ -30,7 +30,7 @@ jobs:
           codes = [x.strip() for x in Path('stocks.txt').read_text().splitlines() if x.strip() and not x.lstrip().startswith('#')]
           assert len(codes) == 28 and len(set(codes)) == 28, f'Stock pool incomplete: {len(codes)}/28'
           PY
-          python collect_data.py --codes-file stocks.txt --start 20160101 --end 20261117 --root .
+          python -m src.collect_data --codes-file stocks.txt --start 20160101 --end 20261117 --root .
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4
